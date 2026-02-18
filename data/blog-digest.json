@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-02-18",
+  "highlights": "Tuần này, trong lĩnh vực công nghệ, hai xu hướng nổi bật là sự phát triển mạnh mẽ của trí tuệ nhân tạo và những thách thức về bảo mật. Việc ra mắt Claude Sonnet 4.6 cho thấy sự cạnh tranh khốc liệt trong ngành AI, trong khi những lỗ hổng bảo mật nghiêm trọng được phát hiện cảnh báo về những rủi ro tiềm ẩn.",
+  "topPicks": [
+    {
+      "title": "Introducing Claude Sonnet 4.6",
+      "titleVi": "Giới thiệu Claude Sonnet 4.6",
+      "link": "https://simonwillison.net/2026/Feb/17/claude-sonnet-46/",
+      "source": "simonwillison.net",
+      "category": "🤖 AI / ML",
+      "score": 27,
+      "summary": "Claude Sonnet 4.6 vừa được phát hành và Anthropic tuyên bố rằng nó cung cấp hiệu suất tương tự như Opus 4.5 trong khi giữ nguyên mức giá $3 cho mỗi triệu token đầu vào và $15 cho mỗi triệu token đầu ra.",
+      "reason": "Đọc bài viết này để hiểu rõ hơn về sự phát triển mới trong công nghệ AI và lợi ích kinh tế mà nó mang lại."
+    },
+    {
+      "title": "AI is destroying Open Source",
+      "titleVi": "AI đang phá hủy Mã nguồn mở",
+      "link": "https://www.jeffgeerling.com/blog/2026/ai-is-destroying-open-source/",
+      "source": "jeffgeerling.com",
+      "category": "💡 Quan điểm",
+      "score": 26,
+      "summary": "Bài viết chỉ ra rằng AI-generated content có thể gây ra sự lan truyền sai thông tin và ảnh hưởng tiêu cực đến uy tín của các nhà phát triển trong cộng đồng mã nguồn mở.",
+      "reason": "Bài viết này giúp người đọc hiểu rõ hơn về những hiểu lầm phổ biến và rủi ro của AI trong open source."
+    },
+    {
+      "title": "Rumors of AGI's arrival have been greatly exaggerated",
+      "titleVi": "Tin đồn về sự xuất hiện của AGI đã bị phóng đại",
+      "link": "https://garymarcus.substack.com/p/rumors-of-agis-arrival-have-been",
+      "source": "garymarcus.substack.com",
+      "category": "🤖 AI / ML",
+      "score": 26,
+      "summary": "Gary Marcus chỉ ra rằng statistical approximation không đồng nghĩa với việc đạt được trí tuệ tổng quát. Quan điểm này nhấn mạnh rằng việc phát triển AGI vẫn còn rất xa vời.",
+      "reason": "Bài viết này cung cấp cái nhìn sâu sắc về các vấn đề thực tế trong phát triển AI."
+    }
+  ],
+  "categories": {
+    "🤖 AI / ML": [
+      {
+        "title": "Introducing Claude Sonnet 4.6",
+        "titleVi": "Giới thiệu Claude Sonnet 4.6",
+        "link": "https://simonwillison.net/2026/Feb/17/claude-sonnet-46/",
+        "source": "simonwillison.net",
+        "score": 27,
+        "summary": "Claude Sonnet 4.6 vừa được phát hành với hiệu suất tương tự Opus 4.5 nhưng giá rẻ hơn."
+      }
+    ],
+    "💡 Quan điểm": [
+      {
+        "title": "AI is destroying Open Source",
+        "titleVi": "AI đang phá hủy Mã nguồn mở",
+        "link": "https://www.jeffgeerling.com/blog/2026/ai-is-destroying-open-source/",
+        "source": "jeffgeerling.com",
+        "score": 26,
+        "summary": "AI-generated content gây rủi ro cho cộng đồng open source."
+      }
+    ]
+  }
+}

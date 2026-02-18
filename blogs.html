@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Insights | Tech Daily</title>
+  <meta name="description" content="Weekly curated insights from 90 top tech blogs recommended by Karpathy">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+  <style>
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: var(--card-bg);
+      color: var(--accent);
+    }
+    .nav-link.active {
+      background: var(--accent);
+      color: white;
+    }
+    .blog-card {
+      border-left: 3px solid var(--accent);
+    }
+    .blog-summary {
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .blog-reason {
+      background: rgba(99, 102, 241, 0.1);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+    .blog-reason strong {
+      color: var(--accent);
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    .medal {
+      font-size: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <span class="logo-icon">📚</span>
+        <h1>Blog Insights</h1>
+      </div>
+      <nav style="display: flex; gap: 0.5rem;">
+        <a href="index.html" class="nav-link">📰 Daily</a>
+        <a href="blogs.html" class="nav-link active">📚 Blogs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value">90</span>
+        <span class="stat-label">Blog Sources</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">10</span>
+        <span class="stat-label">Top Picks</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">7</span>
+        <span class="stat-label">Days Range</span>
+      </div>
+    </div>
+
+    <!-- Highlights -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">✨</span>
+        <h2>Điểm nổi bật tuần này</h2>
+        <span class="section-count">AI-curated từ 90 blogs</span>
+      </div>
+      <div class="highlight-box" id="highlights">
+        <p>Loading...</p>
+      </div>
+    </section>
+
+    <!-- Top Picks -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">🏆</span>
+        <h2>Bài đọc tiêu biểu</h2>
+      </div>
+      <div class="cards-grid" id="top-picks">
+        <!-- Generated content will go here -->
+        <p>Loading...</p>
+      </div>
+    </section>
+
+    <!-- All Articles by Category -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-icon">📂</span>
+        <h2>Theo danh mục</h2>
+      </div>
+      <div id="categories">
+        <!-- Generated content will go here -->
+        <p>Loading...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      📚 Curated from 90 top tech blogs recommended by 
+      <a href="https://x.com/karpathy" target="_blank">Andrej Karpathy</a> |
+      Powered by <a href="https://github.com/vigorX777/ai-daily-digest" target="_blank">ai-daily-digest</a>
+    </p>
+    <p class="footer-note">
+      Made with ❤️ by Duc | Last updated: <span id="last-updated">--</span>
+    </p>
+  </footer>
+
+  <script>
+    // Load digest data
+    fetch('data/blog-digest.json')
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById('last-updated').textContent = data.generatedAt || '--';
+        
+        // Highlights
+        if (data.highlights) {
+          document.getElementById('highlights').innerHTML = `<p>${data.highlights}</p>`;
+        }
+        
+        // Top picks
+        if (data.topPicks && data.topPicks.length > 0) {
+          const medals = ['🥇', '🥈', '🥉'];
+          document.getElementById('top-picks').innerHTML = data.topPicks.map((a, i) => `
+            <article class="card blog-card">
+              <div class="card-header">
+                <span class="medal">${medals[i] || '📄'}</span>
+                <h3 class="card-title">
+                  <a href="${a.link}" target="_blank" rel="noopener">${a.titleVi || a.title}</a>
+                </h3>
+              </div>
+              <p class="card-description blog-summary">${a.summary}</p>
+              <div class="blog-reason">
+                <strong>💡 Tại sao nên đọc:</strong> ${a.reason}
+              </div>
+              <div class="card-meta">
+                <span class="tag tag-language">${a.source}</span>
+                <span class="tag tag-category">${a.category}</span>
+                <span class="tag tag-stars">⭐ ${a.score}/30</span>
+              </div>
+            </article>
+          `).join('');
+        }
+        
+        // Categories
+        if (data.categories) {
+          const catHtml = Object.entries(data.categories).map(([cat, articles]) => `
+            <div style="margin-bottom: 2rem;">
+              <h3 style="color: var(--accent); margin-bottom: 1rem;">${cat}</h3>
+              <div class="cards-grid">
+                ${articles.map(a => `
+                  <article class="card">
+                    <h4 class="card-title">
+                      <a href="${a.link}" target="_blank">${a.titleVi || a.title}</a>
+                    </h4>
+                    <p class="card-description">${a.summary.slice(0, 200)}...</p>
+                    <div class="card-meta">
+                      <span class="tag tag-language">${a.source}</span>
+                      <span class="tag tag-stars">⭐ ${a.score}/30</span>
+                    </div>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
+          `).join('');
+          document.getElementById('categories').innerHTML = catHtml;
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load digest:', err);
+        document.getElementById('highlights').innerHTML = '<p>Chưa có dữ liệu. Digest sẽ được cập nhật hàng tuần.</p>';
+        document.getElementById('top-picks').innerHTML = '';
+        document.getElementById('categories').innerHTML = '';
+      });
+  </script>
+</body>
+</html>
